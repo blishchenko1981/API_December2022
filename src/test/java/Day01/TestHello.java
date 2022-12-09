@@ -1,3 +1,5 @@
+package Day01;
+
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -5,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Day 1 Hello Test")
 public class TestHello {
+// JUnit 5 annotations
 
     @BeforeAll
     public static void setUp(){
