@@ -9,8 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
-
-
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
@@ -72,7 +70,7 @@ public class SpartanTest {
          *      validate StatusCode, header, payload, contentType, responseTime
          *
          */
-    //-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
         String url = "/spartans";  // will contain baseURI + basePath + "/spartans";  !!!!!!!!!!!!!!!!!!!!!!!!!
 
 //-------------------------------------------------------------------------
@@ -85,7 +83,7 @@ public class SpartanTest {
                 .statusCode(200)
                 .and()
                 .header("Content-Type", "application/xml");
-// -----------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 
         given()
                 .accept(ContentType.XML).
