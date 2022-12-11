@@ -48,7 +48,7 @@ public class RestAssuredIntro {
 
         assertThat(response.contentType(), startsWith("text"));
 
-        // ENUM fro Content Type
+        // ENUM for Content Type
         assertThat(response.contentType(), is(not(ContentType.JSON)));
 
         assertThat(response.contentType(), startsWith(ContentType.TEXT.toString()));
