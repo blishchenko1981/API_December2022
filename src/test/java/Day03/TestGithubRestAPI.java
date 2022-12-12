@@ -7,8 +7,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.MatcherAssert.*;
+
 import static org.hamcrest.Matchers.*;
+
+
 public class TestGithubRestAPI {
 
     // https://api.github.com/users/blishchenko1981
