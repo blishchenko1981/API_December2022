@@ -15,7 +15,7 @@ public class LibraryAppTest {
     @BeforeAll
     public static void setUp() {
 
-        //https://library2.cybertekschool.com/login.html
+        //https://library2.cybertekschool.com/rest/v1
 
         baseURI = "https://library2.cybertekschool.com";
         basePath = "/rest/v1";
@@ -93,5 +93,7 @@ public class LibraryAppTest {
         then()
                 .log().all()
                 .statusCode(200);
+
+
     }
 }
