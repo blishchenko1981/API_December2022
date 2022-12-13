@@ -98,6 +98,8 @@ public class JsonPathIntro {
 
         System.out.println("jp.getInt(\"totalElement\") = " + jp.getInt("totalElement"));
 
+        System.out.println("jp.getString(\"name[-1]\") = " + jp.getString("content.name[-1]"));
+
     }
 
 
