@@ -16,31 +16,31 @@ public class MovieDBapi {
 
 
     @BeforeAll
- public static void setUp(){
+    public static void setUp() {
 
         baseURI = "http://www.omdbapi.com";
 
     }
 
-@AfterAll
-    public static void tearDown(){
+    @AfterAll
+    public static void tearDown() {
         reset();
-}
+    }
 
 
-@DisplayName("Test Search Movie")
+    @DisplayName("Test Search Movie")
     @Test
-    public void testMovie(){
+    public void testMovie() {
 
         given()
-                .queryParam("apikey", "a3fabd87" )
+                .queryParam("apikey", "a3fabd87")
                 .queryParam("t", "The Orville").
 
-        when()
+                when()
                 .get().prettyPeek().
 
 
-        then()
+                then()
                 .statusCode(is(200))
                 .contentType(ContentType.JSON)
                 .body("Title", is("The Orville"))
@@ -48,7 +48,31 @@ public class MovieDBapi {
         ;
 
 
-}
+    }
+
+    @DisplayName("Getting the log of request and response")
+    @Test
+    public void testSendingRequestAndGetLOG(){
+
+        given()
+
+                .queryParam("apikey", "a3fabd87")
+                .queryParam("t", "John Wick").log().all().
+
+        when()
+                .get().
+        then()
+                .log().all()
+                .statusCode(200)
+                .body("Plot", containsString("ex-hit-man"))
+                .body("Ratings[2].Source", is("Metacritic"))
+        ;
 
 
+
+
+
+
+
+    }
 }
