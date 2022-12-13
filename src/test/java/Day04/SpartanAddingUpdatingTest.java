@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -104,9 +105,9 @@ public class SpartanAddingUpdatingTest {
                 .log().all()
                 .contentType(ContentType.JSON).
                 body(mapPayload).
-        when()
+                when()
                 .post("/spartans").
-        then()
+                then()
                 .log().all()
                 .statusCode(201)
                 .contentType(ContentType.JSON)
@@ -114,9 +115,42 @@ public class SpartanAddingUpdatingTest {
 
         ;
     }
+
+
+    @DisplayName("POST one data TEST with basic Auth as an External File")
+    @Test
+
+    public void testPOSTdataAuthwithExternalFile() {
+
+        // Create a file called sigleSpartan.json rigth under root directory with content
+        //    {
+        //      "name": "Tester",
+        //      "gender": "Male",
+        //      "phone": 1234543201
+        //     }
+
+
+
+        File externalFile = new File("singleSpartan.json");
+
+        given()
+                .auth().basic("admin", "admin")
+                .log().all()
+                .contentType(ContentType.JSON).
+                body(externalFile).
+                when()
+                .post("/spartans").
+                then()
+                .log().all()
+                .statusCode(201)
+                .contentType(ContentType.JSON)
+                .body("data.name", is("Automation"))
+
+        ;
+
+    }
+
 }
-
-
 
 
 
