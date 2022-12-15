@@ -1,6 +1,7 @@
 package Day06;
 
 import POJO.Spartan;
+import POJO.SpartanWithID;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterAll;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utility.ConfigReader;
 
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
@@ -54,6 +56,27 @@ public class JsonToJavaObject {
 
         System.out.println("responseMap = " + responseMap);
 
+
+        SpartanWithID sp = jp.getObject("" , SpartanWithID.class);
+        System.out.println("sp = " + sp);
+    }
+
+
+
+    @DisplayName("Get all Spartans and save it as a Java Object")
+    @Test
+    public void getAllSpartan_SaveAsObject() {
+
+      JsonPath jp =
+        given()
+                .auth().basic("admin", "admin").
+                when()
+                        .get("/spartans").jsonPath();
+
+
+      List<SpartanWithID> listSpartans = jp.getList("", SpartanWithID.class);
+
+        System.out.println("listSpartans = " + listSpartans);
 
     }
 

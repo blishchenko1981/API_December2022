@@ -60,7 +60,7 @@ public class PostWithCustomObject {
                 .log().all()
                 .body("data.name", is(containsString((sp1.getName()))))
                 .body("data.gender", is(sp1.getGender()))
-                .body("data.", is(sp1.getName()))
+                .body("data.phone", is(sp1.getPhone()))
                 .body("success", is(containsString( " is Born")))
 
         ;
