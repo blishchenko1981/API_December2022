@@ -148,7 +148,7 @@ public class Spartan_E2E_HappyPath {
                 then()
                 .statusCode(204);
 
-        // make sure the Spartan was deleted send anoter get and assert status 404
+        // make sure the Spartan was deleted send another get and assert status 404
 
         given()
 
