@@ -136,11 +136,12 @@ public class LibraryAppTest {
                 .log().all()
                 .header("x-library-token", libraryTokenToLogin()).
         when()
-                .get("/get_book_categories").prettyPeek()
+                .get("/get_book_categories")
+                //.prettyPeek()
                 .jsonPath();
 
         List<BookCategory> allCategory = jp.getList("", BookCategory.class);
-        allCategory.forEach(System.out::println);
+      //  allCategory.forEach(System.out::println);
 
         // use jp to get number 5 item from response
 

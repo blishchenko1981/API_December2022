@@ -1,11 +1,14 @@
 package POJO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class BookCategory {
 
+    @JsonProperty("id")
     private String category_id ;
+
+    @JsonProperty("name")
     private String category_name;
-
-
 
 
     public String getId() {
