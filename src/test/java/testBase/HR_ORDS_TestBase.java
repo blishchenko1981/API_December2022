@@ -2,6 +2,8 @@ package testBase;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import utility.ConfigReader;
+import utility.DB_Util;
 
 import static io.restassured.RestAssured.*;
 
@@ -11,8 +13,14 @@ public class HR_ORDS_TestBase {
     public static void setUp() {
 
 
-        baseURI = "http://54.236.150.168:1000";
-        basePath = "/ords/hr/";
+        baseURI = ConfigReader.read("ords.baseURL");
+        basePath = ConfigReader.read("ords.basePath");
+
+        // create Data Base connection
+
+        DB_Util.createConnection(ConfigReader.read("hr.database.url"),
+                ConfigReader.read("hr.database.username"),
+                ConfigReader.read("hr.database.password"));
 
     }
 
@@ -20,6 +28,9 @@ public class HR_ORDS_TestBase {
     public static void tearDown() {
 
         reset();
+
+        // Destroy DB connection here
+        DB_Util.destroy();
     }
 
 }
